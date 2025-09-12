@@ -105,7 +105,6 @@ int main()
     LinkedList l1;
     l1.insertAtHead("Data Structures");
     l1.insertAtTail("Operating Systems");
-    l1.insertAtTail("Data Structures");
     l1.insertAtTail("Computer Networks");
     l1.insertAtTail("DataBase Systems");
 
