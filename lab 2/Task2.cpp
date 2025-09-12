@@ -10,7 +10,7 @@ class Matrix
 
     public:
 
-        Matrix(int, int col)
+        Matrix(int r, int col)
         {
             rowsNum = r;
             columnsNum = col;
