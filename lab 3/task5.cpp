@@ -13,13 +13,13 @@ struct Node
     }
 };
 
-class MusicPLaylist
+class MusicPlayList
 {
     Node *head;
     Node *tail;
 
     public:
-        MusicPLaylist()
+        MusicPlayList()
         {
             head = NULL;
             tail = NULL;
@@ -27,13 +27,19 @@ class MusicPLaylist
 
         void insertAtHead(string val)
         {
-            Node *temp = new Node(val);
-            temp->next = head;
-            head = temp;       
+            Node *temp = new Node(val);      
 
-            if (tail == NULL)
+            if (head == NULL)
             {
-                tail = head;
+                head = temp;
+                tail = temp;
+                temp->next = head;
+            }
+            else 
+            {
+                temp->next = head;
+                head = temp;
+                tail->next = head;
             }
         }
 
@@ -45,86 +51,130 @@ class MusicPLaylist
             {
                 head = temp;
                 tail = temp;
+                temp->next = head;
             }
 
             else
             {
                 tail->next = temp; 
+                temp->next = head; 
                 tail = temp;       
             }
         }
 
-        void deleteHead()
+        void deleteHead() 
         {
-            if (head == NULL) {return;}
+            if (head == NULL) return;
 
-            Node *next = head->next;
-            delete head;
-            head = next;
-
-            if (head == NULL) {tail = NULL;}
+            if (head == tail) 
+            { 
+                delete head;
+                head = tail = NULL;
+            }
+            else 
+            {
+                Node* toDelete = head;
+                head = head->next;
+                tail->next = head;
+                delete toDelete;
+            }
         }
 
-        void searchPosition(int pos)
+        void searchPosition(int pos) 
         {
-            if (pos < 1)
+            if (head == NULL || pos < 1) 
             {
-                cout << "Invalid position entered!\n";
-            }
-
-            Node *temp = head;
-            int i = 1;
-
-            while (i != pos && temp != NULL)
-            {
-                temp = temp->next;
-                i++;
-            }
-
-            if (temp == NULL)
-            {
-                cout << "Invalid position entered!\n";
+                cout << "Invalid position!\n";
                 return;
             }
 
-            cout << "Book " << temp->data << " at position " << pos << endl;
-        }
+            Node* temp = head;
+            int i = 1;
 
-        void searchMusic(string title)
-        {
-            Node *temp = head;
-
-            while (temp != NULL)
+            do 
             {
-                if (temp->data == title)
+                if (i == pos) 
                 {
-                    cout << title << " book found!\n";
+                    cout << "Music " << temp->data << " at position " << pos << endl;
                     return;
                 }
-
                 temp = temp->next;
+                i++;
+            } while (temp != head);
+
+            cout << "Invalid position!\n";
+        }
+
+        void searchMusic(string title) 
+        {
+            if (head == NULL) 
+            {
+                cout << "Playlist empty!\n";
+                return;
             }
 
-            cout << title << " book not avaialable!" << endl;
+            Node* temp = head;
+            do 
+            {
+                if (temp->data == title) 
+                {
+                    cout << title << " found!\n";
+                    return;
+                }
+                temp = temp->next;
+            } while (temp != head);
+
+            cout << title << " not available!\n";
         }
 
         void display()
         {
+            if (head == NULL)
+            {
+                cout << "Playlist empty!\n";
+                return;
+            }
+
             Node *temp = head;
 
-            while(temp != NULL)
+            do
             {
                 cout << temp->data << "->";
                 temp = temp->next;
-            }
+            }while (temp != head);
 
-            cout << "NULL\n";
+            cout << "(head)";
         }
 };
 
 int main()
-{
-    
+{   
+    MusicPlayList playlist;
+
+    playlist.insertAtHead("Blinding Lights");
+    playlist.insertAtTail("Shape of You");
+    playlist.insertAtTail("Levitating");
+    playlist.insertAtHead("Peaches");
+    playlist.insertAtTail("Bad Guy");
+
+    cout << "Playlist:\n";
+    playlist.display();
+
+    playlist.searchPosition(1);
+    playlist.searchPosition(3);
+    playlist.searchPosition(6);
+
+    playlist.searchMusic("Levitating");
+    playlist.searchMusic("Happier"); 
+
+    playlist.deleteHead();
+    playlist.display();
+
+    playlist.insertAtTail("Stay");
+    playlist.insertAtTail("Senorita");
+
+    cout << "\nPlaylist:\n";
+    playlist.display();
 
     return 0;
 }
