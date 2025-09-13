@@ -15,13 +15,13 @@ struct Node
     }
 };
 
-class LinkedList
+class MusicPLaylist
 {
     Node *head;
     Node *tail;
 
     public:
-        LinkedList()
+        MusicPLaylist()
         {
             head = NULL;
             tail = NULL;
@@ -99,7 +99,7 @@ class LinkedList
 
 int main()
 {
-    LinkedList train;
+    MusicPLaylist train;
     
     train.insertAtTail(34);
     train.insertAtTail(46);

@@ -90,7 +90,7 @@ class MusicPLaylist
             cout << "Book " << temp->data << " at position " << pos << endl;
         }
 
-        void searchCompartment(string title)
+        void searchMusic(string title)
         {
             Node *temp = head;
 
@@ -124,18 +124,7 @@ class MusicPLaylist
 
 int main()
 {
-    MusicPLaylist l1;
-    l1.insertAtHead("Data Structures");
-    l1.insertAtTail("Operating Systems");
-    l1.insertAtTail("Computer Networks");
-    l1.insertAtTail("DataBase Systems");
-
-    l1.insertAtTail("Machine Learning");
-    l1.deleteHead();
-    l1.searchCompartment("Computer Networks");
-    l1.searchPosition(4);
-
-    l1.display();
+    
 
     return 0;
 }

@@ -15,13 +15,13 @@ struct Node
     }
 };
 
-class LinkedList
+class MusicPLaylist
 {
     Node *head;
     Node *tail;
 
     public:
-        LinkedList()
+        MusicPLaylist()
         {
             head = NULL;
             tail = NULL;
@@ -97,7 +97,7 @@ class LinkedList
             } while (swapped);
         }
 
-        void concatenate(LinkedList &other)
+        void concatenate(MusicPLaylist &other)
         {
             if (other.head == nullptr) {return;}
             if (head == nullptr)
@@ -172,9 +172,9 @@ class LinkedList
             }
         }
 
-        static LinkedList mergeSorted(LinkedList &l1, LinkedList &l2)
+        static MusicPLaylist mergeSorted(MusicPLaylist &l1, MusicPLaylist &l2)
         {
-            LinkedList result;
+            MusicPLaylist result;
             Node* p1 = l1.head;
             Node* p2 = l2.head;
 
@@ -211,7 +211,7 @@ class LinkedList
 
 int main()
 {
-    LinkedList list1;
+    MusicPLaylist list1;
     list1.insertAtTail(5);
     list1.insertAtTail(1);
     list1.insertAtTail(3);
@@ -226,7 +226,7 @@ int main()
     cout << "Sorted list 1: ";
     list1.display();
 
-    LinkedList list2;
+    MusicPLaylist list2;
     list2.insertAtTail(2);
     list2.insertAtTail(4);
     list2.insertAtTail(6);
@@ -244,7 +244,7 @@ int main()
     cout << "After removing duplicates: ";
     list1.display();
 
-    LinkedList merged = LinkedList::mergeSorted(list1, list2);
+    MusicPLaylist merged = MusicPLaylist::mergeSorted(list1, list2);
     cout << "Merged and sorted lists 1 and 2: ";
     merged.display();
 
