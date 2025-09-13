@@ -15,13 +15,13 @@ struct Node
     }
 };
 
-class MusicPLaylist
+class LinkedList
 {
     Node *head;
     Node *tail;
 
     public:
-        MusicPLaylist()
+        LinkedList()
         {
             head = NULL;
             tail = NULL;
@@ -73,7 +73,7 @@ class MusicPLaylist
             {
                 if (temp->data == comp)
                 {
-                    cout << "Comparment number " << comp << " found!\n";
+                    cout << "Compartment number " << comp << " found!\n";
                     return;
                 }
 
@@ -99,7 +99,7 @@ class MusicPLaylist
 
 int main()
 {
-    MusicPLaylist train;
+    LinkedList train;
     
     train.insertAtTail(34);
     train.insertAtTail(46);
