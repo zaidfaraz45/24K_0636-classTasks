@@ -5,17 +5,17 @@ int *bubbleSort(int arr[], int size)
 {
     for (int i = 0; i < size; i++)
     {
-        bool found = false;
+        bool swapped = false;
         for (int j = 0; j < size - i - 1; j++)
         {
             if (arr[j] > arr[j + 1])
             {
                 swap(arr[j], arr[j + 1]);
-                found = true;
+                swapped = true;
             }
         }
 
-        if (!found) {break;}
+        if (!swapped) {break;}
     }
 
     return arr;
