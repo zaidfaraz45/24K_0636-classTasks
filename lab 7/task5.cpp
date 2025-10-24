@@ -19,6 +19,7 @@ int choosePivot(vector<int>& arr, int low, int high, const string& method)
         else if ((b > a) != (b > c)) return mid;
         else return high;
     }
+    
     return high; 
 }
 
